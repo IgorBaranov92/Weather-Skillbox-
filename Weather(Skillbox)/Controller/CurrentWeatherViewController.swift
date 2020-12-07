@@ -1,9 +1,5 @@
 import UIKit
 
-protocol CurrentWeatherDelegate: class {
-    func chooserSelectedAt(index:Int)
-}
-
 class CurrentWeatherViewController: UIViewController, ImageFetcherDelegate {
 
     @IBOutlet weak var spinner: UIActivityIndicatorView!
@@ -29,7 +25,7 @@ class CurrentWeatherViewController: UIViewController, ImageFetcherDelegate {
                     self?.updateUI()
                 }
             } else { //Alamofire
-                ImageFetcher_Alamofire.delegate = self
+                //ImageFetcher_Alamofire.delegate = self
                 WeatherFetcher_Alamofire.fetchWeather { [weak self] (currentWeather) in
                     self?.weather = currentWeather
                     self?.updateUI()

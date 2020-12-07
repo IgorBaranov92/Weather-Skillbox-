@@ -31,10 +31,10 @@
 		785954B6257E320D00CE699E /* WeatherFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785954B3257E320D00CE699E /* WeatherFetcher.swift */; };
 		785954B7257E320D00CE699E /* ForecastFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785954B4257E320D00CE699E /* ForecastFetcher.swift */; };
 		785954B8257E320D00CE699E /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785954B5257E320D00CE699E /* ImageFetcher.swift */; };
-		785954BF257E321A00CE699E /* ImageFetcher_Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785954BC257E321A00CE699E /* ImageFetcher_Alamofire.swift */; };
 		785954C0257E321A00CE699E /* ForeCastFetcher_Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785954BD257E321A00CE699E /* ForeCastFetcher_Alamofire.swift */; };
 		785954C1257E321A00CE699E /* WeatherFetcher_Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785954BE257E321A00CE699E /* WeatherFetcher_Alamofire.swift */; };
 		785954C7257E346300CE699E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785954C6257E346300CE699E /* Main.storyboard */; };
+		785954D3257E40DF00CE699E /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785954D2257E40DF00CE699E /* Protocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,10 +63,10 @@
 		785954B3257E320D00CE699E /* WeatherFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherFetcher.swift; sourceTree = "<group>"; };
 		785954B4257E320D00CE699E /* ForecastFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastFetcher.swift; sourceTree = "<group>"; };
 		785954B5257E320D00CE699E /* ImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
-		785954BC257E321A00CE699E /* ImageFetcher_Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFetcher_Alamofire.swift; sourceTree = "<group>"; };
 		785954BD257E321A00CE699E /* ForeCastFetcher_Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForeCastFetcher_Alamofire.swift; sourceTree = "<group>"; };
 		785954BE257E321A00CE699E /* WeatherFetcher_Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherFetcher_Alamofire.swift; sourceTree = "<group>"; };
 		785954C6257E346300CE699E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		785954D2257E40DF00CE699E /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +119,7 @@
 				780027FC257E29E100C909B2 /* LaunchScreen.storyboard */,
 				780027FF257E29E100C909B2 /* Info.plist */,
 				780027F7257E29E000C909B2 /* Weather_Skillbox_.xcdatamodeld */,
+				785954D2257E40DF00CE699E /* Protocols.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -170,6 +171,7 @@
 				785954AC257E320200CE699E /* Forecast.swift */,
 				785954AA257E320200CE699E /* ForecastParser.swift */,
 				785954AB257E320200CE699E /* Weather.swift */,
+				785954B5257E320D00CE699E /* ImageFetcher.swift */,
 				785954BA257E320F00CE699E /* Alamofire */,
 				785954B1257E320500CE699E /* Native */,
 			);
@@ -180,7 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				785954B4257E320D00CE699E /* ForecastFetcher.swift */,
-				785954B5257E320D00CE699E /* ImageFetcher.swift */,
 				785954B3257E320D00CE699E /* WeatherFetcher.swift */,
 			);
 			path = Native;
@@ -190,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				785954BD257E321A00CE699E /* ForeCastFetcher_Alamofire.swift */,
-				785954BC257E321A00CE699E /* ImageFetcher_Alamofire.swift */,
 				785954BE257E321A00CE699E /* WeatherFetcher_Alamofire.swift */,
 			);
 			path = Alamofire;
@@ -280,7 +280,6 @@
 				7859549E257E31DA00CE699E /* String+Extensions.swift in Sources */,
 				785954A6257E31F000CE699E /* CurrentWeatherViewController.swift in Sources */,
 				7859549C257E31DA00CE699E /* Array+Extensions.swift in Sources */,
-				785954BF257E321A00CE699E /* ImageFetcher_Alamofire.swift in Sources */,
 				785954AF257E320200CE699E /* Forecast.swift in Sources */,
 				785954A5257E31F000CE699E /* WeatherViewController.swift in Sources */,
 				785954B8257E320D00CE699E /* ImageFetcher.swift in Sources */,
@@ -288,6 +287,7 @@
 				7859549B257E31DA00CE699E /* Date+Extensions.swift in Sources */,
 				785954AE257E320200CE699E /* Weather.swift in Sources */,
 				78595492257E31C700CE699E /* WeatherAnimator.swift in Sources */,
+				785954D3257E40DF00CE699E /* Protocols.swift in Sources */,
 				78595491257E31C700CE699E /* RoundedButton.swift in Sources */,
 				785954AD257E320200CE699E /* ForecastParser.swift in Sources */,
 				780027F9257E29E000C909B2 /* Weather_Skillbox_.xcdatamodeld in Sources */,
