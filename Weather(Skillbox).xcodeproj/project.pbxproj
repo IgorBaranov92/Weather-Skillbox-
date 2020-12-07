@@ -169,8 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				785954AC257E320200CE699E /* Forecast.swift */,
-				785954AA257E320200CE699E /* ForecastParser.swift */,
 				785954AB257E320200CE699E /* Weather.swift */,
+				785954AA257E320200CE699E /* ForecastParser.swift */,
 				785954B5257E320D00CE699E /* ImageFetcher.swift */,
 				785954BA257E320F00CE699E /* Alamofire */,
 				785954B1257E320500CE699E /* Native */,

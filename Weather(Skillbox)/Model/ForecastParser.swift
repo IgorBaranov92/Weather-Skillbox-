@@ -27,7 +27,7 @@ class ForecastParser {
                 let weekday = date.getWeekday()
                 let weather = Weather(tempInKelvin: Int(tempInKelvin), humidity: humidity, iconID: iconID, windSpeed: Int(windSpeed), weather: weatherDesc, visibility: Double(visibility)/1000)
                 let imageURL = URL(string: "http://openweathermap.org/img/wn/\(iconID)@2x.png")
-                let cast = Forecast(day: dayDesc, dayDescription: weekday, imageURL: imageURL, backupImageData: nil, weather: weather)
+                let cast = Forecast(day: dayDesc, dayDesc: weekday, imageURL: imageURL, weather: weather)
                 hourForecast.append(cast)
                 let dateKey = date.getDayDesc(full: false)
                 if !dates.contains(dateKey) { dates.append(dateKey)}
@@ -43,7 +43,7 @@ class ForecastParser {
                let visibility = daily.map({ $0.weather.visibility }).findAverage(),
                let windSpeed = daily.map({ $0.weather.windSpeed }).findAverage(),
                let weather = daily.map({ $0.weather.weather }).findMostRepeatableElement(){
-                dailyForecast.append(Forecast(day: dates[i], dayDescription: day, imageURL: url, backupImageData: nil, weather: Weather(tempInKelvin: temp + 273, humidity: humidity, iconID: iconID, windSpeed: windSpeed, weather: weather, visibility: visibility)))
+                dailyForecast.append(Forecast(day: dates[i], dayDesc: day, imageURL: url, weather: Weather(tempInKelvin: temp + 273, humidity: humidity, iconID: iconID, windSpeed: windSpeed, weather: weather, visibility: visibility)))
             }
         }
         completion(dailyForecast,hourForecast)

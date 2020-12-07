@@ -1,7 +1,7 @@
 import Foundation
 
 
-struct Weather {
+struct Weather: Codable {
 
     let city:String
     let windSpeed:Int
