@@ -35,8 +35,8 @@ class CurrentWeatherViewController: UIViewController, ImageFetcherDelegate {
     
     private func fetchWith(_ fetcher:Fetcher) {
         fetcher.fetchWeather { [weak self] (currentWeather) in
-            self?.updateUI(shouldHideSpinner: true)
             self?.weather = currentWeather
+            self?.updateUI(shouldHideSpinner: true)            
         }
     }
     
