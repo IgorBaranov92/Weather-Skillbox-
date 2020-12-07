@@ -10,7 +10,7 @@ class ImageFetcher {
             DispatchQueue.global(qos: .userInitiated).async {
                 if let data = try? Data(contentsOf: url),let image = UIImage(data: data) {
                     DispatchQueue.main.async {
-                        delegate?.imageFetched(image)
+                        delegate?.imageFetched(image,backup: data)
                     }
                 }
             }

@@ -12,6 +12,7 @@ struct Weather: Codable {
     let temperatureInFahrenheit: Int
     let humidity: Int
     let iconID: String
+    var backupImageData: Data? = nil
     
     init?(json:[String:Any]) {
         guard let visibility = json["visibility"] as? Double ,
@@ -54,6 +55,16 @@ struct Weather: Codable {
         self.visibility = visibility
     }
     
+    var json: Data? {
+        return try? JSONEncoder().encode(self)
+    }
 
+    init?(json: Data) {
+        if let value = try? JSONDecoder().decode(Weather.self, from: json) {
+            self = value
+        } else {
+            return nil
+        }
+    }
     
 }

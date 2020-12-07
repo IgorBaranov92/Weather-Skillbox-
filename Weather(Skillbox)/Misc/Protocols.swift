@@ -6,5 +6,5 @@ protocol CurrentWeatherDelegate: class {
 }
 
 protocol ImageFetcherDelegate: class {
-    func imageFetched(_ image:UIImage)
+    func imageFetched(_ image:UIImage,backup:Data?)
 }

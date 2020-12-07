@@ -10,36 +10,47 @@ class CurrentWeatherViewController: UIViewController, ImageFetcherDelegate {
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var sunsetLabel: UILabel!
     @IBOutlet weak var visibilityLabel: UILabel!
-    @IBOutlet weak var windLabel: UILabel!
+    @IBOutlet weak var windLabel: UILabel! 
     
-    var weather: Weather!
+    var weather: Weather! { didSet { saveWeather() }}
+    
     weak var delegate: CurrentWeatherDelegate?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        recreateWeatherIfPossible()
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if let index = tabBarController?.selectedIndex, weather == nil {
+        if let index = tabBarController?.selectedIndex {
             ImageFetcher.delegate = self
             if index == 0 { // native
                 WeatherFetcher.fetchWeather { [weak self] (currentWeather) in
+                    self?.updateUI(shouldHideSpinner: true)
                     self?.weather = currentWeather
-                    self?.updateUI()
                 }
             } else { //Alamofire
                 WeatherFetcher_Alamofire.fetchWeather { [weak self] (currentWeather) in
+                    self?.updateUI(shouldHideSpinner: true)
                     self?.weather = currentWeather
-                    self?.updateUI()
                 }
             }
         }
     }
     
-    func imageFetched(_ image: UIImage) {
+    func imageFetched(_ image: UIImage,backup:Data?) {
         imageView.image = image
+        weather.backupImageData = backup
     }
 
     
-    private func updateUI() {
-        spinner.stopAnimating()
+    private func updateUI(shouldHideSpinner:Bool) {
+        print(shouldHideSpinner)
+        if shouldHideSpinner { spinner.stopAnimating() }
+        if weather != nil, let backup = weather.backupImageData {
+            imageView.image = UIImage(data: backup)
+        }
         humidityLabel.text = "Влажность: \(weather.humidity)%"
         visibilityLabel.text = "Видимость: \(weather.visibility.trimmed)км"
         windLabel.text = "Ветер: \(weather.windSpeed)м/с"
@@ -57,5 +68,20 @@ class CurrentWeatherViewController: UIViewController, ImageFetcherDelegate {
         let temperature = weatherChooser.selectedSegmentIndex == 0 ? "\(weather.temperatureInCelsium)°C" : "\(weather.temperatureInFahrenheit)°F"
         weatherLabel.text = "\(weather.weather.capitalizedFirst) \(temperature)"
     }
+    
+    private func saveWeather() {
+        if let urlToSave = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("weather"),let json = weather.json {
+            try? json.write(to: urlToSave)
+        }
+    }
+    
+    private func recreateWeatherIfPossible() {
+        if let url = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("weather"),let data = try? Data(contentsOf: url),let newValue = Weather(json: data) {
+            weather = newValue
+            updateUI(shouldHideSpinner: false)
+            saveWeather()
+        }
+    }
+    
     
 }
