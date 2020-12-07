@@ -1,9 +1,9 @@
 import Foundation
 
 
-class WeatherFetcher {
+class WeatherFetcher :Fetcher {
     
-    static func fetchWeather(completion: @escaping (Weather) -> Void ) {
+    override func fetchWeather(completion: @escaping (Weather) -> Void ) {
         DispatchQueue.global(qos: .userInitiated).async {
             if let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=Moscow&lang=ru&appid=b86ba08e3b045016f8a7e08b97e64ad2") {
                 URLSession.shared.dataTask(with: url) { (data, responce, error) in

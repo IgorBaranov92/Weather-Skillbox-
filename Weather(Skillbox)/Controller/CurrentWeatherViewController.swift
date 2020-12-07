@@ -26,16 +26,17 @@ class CurrentWeatherViewController: UIViewController, ImageFetcherDelegate {
         if let index = tabBarController?.selectedIndex {
             ImageFetcher.delegate = self
             if index == 0 { // native
-                WeatherFetcher.fetchWeather { [weak self] (currentWeather) in
-                    self?.updateUI(shouldHideSpinner: true)
-                    self?.weather = currentWeather
-                }
+                fetchWith(WeatherFetcher())
             } else { //Alamofire
-                WeatherFetcher_Alamofire.fetchWeather { [weak self] (currentWeather) in
-                    self?.updateUI(shouldHideSpinner: true)
-                    self?.weather = currentWeather
-                }
+                fetchWith(WeatherFetcher_Alamofire())
             }
+        }
+    }
+    
+    private func fetchWith(_ fetcher:Fetcher) {
+        fetcher.fetchWeather { [weak self] (currentWeather) in
+            self?.updateUI(shouldHideSpinner: true)
+            self?.weather = currentWeather
         }
     }
     
@@ -46,7 +47,6 @@ class CurrentWeatherViewController: UIViewController, ImageFetcherDelegate {
 
     
     private func updateUI(shouldHideSpinner:Bool) {
-        print(shouldHideSpinner)
         if shouldHideSpinner { spinner.stopAnimating() }
         if weather != nil, let backup = weather.backupImageData {
             imageView.image = UIImage(data: backup)

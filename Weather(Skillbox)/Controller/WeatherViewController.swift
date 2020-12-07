@@ -18,6 +18,11 @@ class WeatherViewController: UIViewController, UITableViewDataSource, UITableVie
     private var weatherView = WeatherView()
     private var index = 0
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        recreateForecastIfPossible()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let index = tabBarController?.selectedIndex, forecast == nil {
@@ -87,12 +92,7 @@ class WeatherViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     private func updateWeatherAt(index:Int) {
-        let weather = forecast[index].weather
-        weatherView.humidityLabel.text = "Влажность: \(weather.humidity)%"
-        weatherView.visibilityLabel.text = "Видимость: \(weather.visibility.trimmed)км"
-        weatherView.windLabel.text = "Ветер: \(weather.windSpeed)м/с"
-        weatherView.dateLabel.text = "\(forecast[index].dayDescription) \(forecast[index].day) "
-        weatherView.tempLabel.text = "\(weather.weather.capitalizedFirst) \(weather.temperatureInCelsium)°C/\(weather.temperatureInFahrenheit)°F"
+        weatherView.updateUIWith(forecast[index])
     }
     
     
@@ -125,4 +125,23 @@ class WeatherViewController: UIViewController, UITableViewDataSource, UITableVie
         forecastSpinner.stopAnimating()
     }
     
+    private func recreateForecastIfPossible() {
+        
+    }
+    
+    
+    
+}
+
+
+extension WeatherView {
+    
+    func updateUIWith(_ forecast:Forecast) {
+        let weather = forecast.weather
+        humidityLabel.text = "Влажность: \(weather.humidity)%"
+        visibilityLabel.text = "Видимость: \(weather.visibility.trimmed)км"
+        windLabel.text = "Ветер: \(weather.windSpeed)м/с"
+        dateLabel.text = "\(forecast.dayDescription) \(forecast.day) "
+        tempLabel.text = "\(weather.weather.capitalizedFirst) \(weather.temperatureInCelsium)°C/\(weather.temperatureInFahrenheit)°F"
+    }
 }

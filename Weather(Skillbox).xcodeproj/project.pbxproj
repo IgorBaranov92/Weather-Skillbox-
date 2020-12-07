@@ -35,6 +35,7 @@
 		785954C1257E321A00CE699E /* WeatherFetcher_Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785954BE257E321A00CE699E /* WeatherFetcher_Alamofire.swift */; };
 		785954C7257E346300CE699E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785954C6257E346300CE699E /* Main.storyboard */; };
 		785954D3257E40DF00CE699E /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785954D2257E40DF00CE699E /* Protocols.swift */; };
+		785CD228257E7E1700355FD0 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CD227257E7E1700355FD0 /* Fetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		785954BE257E321A00CE699E /* WeatherFetcher_Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherFetcher_Alamofire.swift; sourceTree = "<group>"; };
 		785954C6257E346300CE699E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		785954D2257E40DF00CE699E /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		785CD227257E7E1700355FD0 /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				785954AB257E320200CE699E /* Weather.swift */,
 				785954AA257E320200CE699E /* ForecastParser.swift */,
 				785954B5257E320D00CE699E /* ImageFetcher.swift */,
+				785CD227257E7E1700355FD0 /* Fetcher.swift */,
 				785954BA257E320F00CE699E /* Alamofire */,
 				785954B1257E320500CE699E /* Native */,
 			);
@@ -290,6 +293,7 @@
 				785954D3257E40DF00CE699E /* Protocols.swift in Sources */,
 				78595491257E31C700CE699E /* RoundedButton.swift in Sources */,
 				785954AD257E320200CE699E /* ForecastParser.swift in Sources */,
+				785CD228257E7E1700355FD0 /* Fetcher.swift in Sources */,
 				780027F9257E29E000C909B2 /* Weather_Skillbox_.xcdatamodeld in Sources */,
 				785954C1257E321A00CE699E /* WeatherFetcher_Alamofire.swift in Sources */,
 				78595490257E31C700CE699E /* WeatherViewConstraint.swift in Sources */,
