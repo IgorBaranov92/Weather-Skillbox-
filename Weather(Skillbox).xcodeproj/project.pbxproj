@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		780027EF257E29E000C909B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780027EE257E29E000C909B2 /* AppDelegate.swift */; };
-		780027F6257E29E000C909B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 780027F4257E29E000C909B2 /* Main.storyboard */; };
 		780027F9257E29E000C909B2 /* Weather_Skillbox_.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 780027F7257E29E000C909B2 /* Weather_Skillbox_.xcdatamodeld */; };
 		780027FB257E29E100C909B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 780027FA257E29E100C909B2 /* Assets.xcassets */; };
 		780027FE257E29E100C909B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 780027FC257E29E100C909B2 /* LaunchScreen.storyboard */; };
@@ -35,12 +34,12 @@
 		785954BF257E321A00CE699E /* ImageFetcher_Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785954BC257E321A00CE699E /* ImageFetcher_Alamofire.swift */; };
 		785954C0257E321A00CE699E /* ForeCastFetcher_Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785954BD257E321A00CE699E /* ForeCastFetcher_Alamofire.swift */; };
 		785954C1257E321A00CE699E /* WeatherFetcher_Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785954BE257E321A00CE699E /* WeatherFetcher_Alamofire.swift */; };
+		785954C7257E346300CE699E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785954C6257E346300CE699E /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		780027EB257E29E000C909B2 /* Weather(Skillbox).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather(Skillbox).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		780027EE257E29E000C909B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		780027F5257E29E000C909B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		780027F8257E29E000C909B2 /* Weather_Skillbox_.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Weather_Skillbox_.xcdatamodel; sourceTree = "<group>"; };
 		780027FA257E29E100C909B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		780027FD257E29E100C909B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		785954BC257E321A00CE699E /* ImageFetcher_Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFetcher_Alamofire.swift; sourceTree = "<group>"; };
 		785954BD257E321A00CE699E /* ForeCastFetcher_Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForeCastFetcher_Alamofire.swift; sourceTree = "<group>"; };
 		785954BE257E321A00CE699E /* WeatherFetcher_Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherFetcher_Alamofire.swift; sourceTree = "<group>"; };
+		785954C6257E346300CE699E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 		780027ED257E29E000C909B2 /* Weather(Skillbox) */ = {
 			isa = PBXGroup;
 			children = (
-				780027F4257E29E000C909B2 /* Main.storyboard */,
+				785954C6257E346300CE699E /* Main.storyboard */,
 				785954A8257E31F200CE699E /* Model */,
 				78595489257E31BC00CE699E /* View */,
 				78595488257E31B400CE699E /* Cell */,
@@ -261,8 +261,8 @@
 			files = (
 				780027FE257E29E100C909B2 /* LaunchScreen.storyboard in Resources */,
 				780027FB257E29E100C909B2 /* Assets.xcassets in Resources */,
-				780027F6257E29E000C909B2 /* Main.storyboard in Resources */,
 				7859548F257E31C700CE699E /* WeatherView.xib in Resources */,
+				785954C7257E346300CE699E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,14 +302,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		780027F4257E29E000C909B2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				780027F5257E29E000C909B2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		780027FC257E29E100C909B2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

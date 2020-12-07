@@ -46,10 +46,10 @@ class CurrentWeatherViewController: UIViewController, ImageFetcherDelegate {
     private func updateUI() {
         spinner.stopAnimating()
         humidityLabel.text = "Влажность: \(weather.humidity)%"
-        weatherLabel.text = weather.weather
-        sunsetLabel.text = "Закат: \(weather.sunset)"
         visibilityLabel.text = "Видимость: \(weather.visibility.trimmed)км"
         windLabel.text = "Ветер: \(weather.windSpeed)м/с"
+        weatherLabel.text = weather.weather
+        sunsetLabel.text = "Закат: \(weather.sunset)"
         updateTemperature()
     }
     
