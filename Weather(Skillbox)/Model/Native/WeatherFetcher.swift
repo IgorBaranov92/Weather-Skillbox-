@@ -11,15 +11,13 @@ class WeatherFetcher {
                        let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
                         if let dict = json as? [String:Any] {
                             if let current = Weather(json: dict) {
-                                if let imageURL = URL(string: "http://openweathermap.org/img/wn/\(current.iconID)@2x.png")  {
+                                let imageURL = URL(string: "http://openweathermap.org/img/wn/\(current.iconID)@2x.png")
                                     ImageFetcher.fetch(imageURL)
-                                }
                                 DispatchQueue.main.async {
                                     completion(current)
                                 }
                             } else { print("can't create weather object")}
                         }
-                        //print(json)
                     }
                 }.resume()
             }

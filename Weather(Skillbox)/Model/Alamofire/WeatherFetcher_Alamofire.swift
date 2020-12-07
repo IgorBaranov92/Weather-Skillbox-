@@ -12,7 +12,7 @@ class WeatherFetcher_Alamofire {
                         completion(current)
                     }
                         if let imageURL = URL(string: "http://openweathermap.org/img/wn/\(current.iconID)@2x.png")  {
-                          //  ImageFetcher_Alamofire.fetch(imageURL)
+                            ImageFetcher.fetch(imageURL)
                         }
                     }
             }

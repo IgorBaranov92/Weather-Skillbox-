@@ -18,14 +18,13 @@ class CurrentWeatherViewController: UIViewController, ImageFetcherDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let index = tabBarController?.selectedIndex, weather == nil {
+            ImageFetcher.delegate = self
             if index == 0 { // native
-                ImageFetcher.delegate = self
                 WeatherFetcher.fetchWeather { [weak self] (currentWeather) in
                     self?.weather = currentWeather
                     self?.updateUI()
                 }
             } else { //Alamofire
-                //ImageFetcher_Alamofire.delegate = self
                 WeatherFetcher_Alamofire.fetchWeather { [weak self] (currentWeather) in
                     self?.weather = currentWeather
                     self?.updateUI()
