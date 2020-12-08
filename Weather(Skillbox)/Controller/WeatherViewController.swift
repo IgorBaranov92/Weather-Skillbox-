@@ -11,9 +11,7 @@ class WeatherViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var forecastChooser: UISegmentedControl!
     
-    private var dailyForecast: [Forecast]!
-    private var hourForecast: [Forecast]!
-    private var forecast: [Forecast]!
+    private var forecastData: ForecastData!
     
     private var weatherView = WeatherView()
     private var index = 0
@@ -25,7 +23,7 @@ class WeatherViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if let index = tabBarController?.selectedIndex, forecast == nil {
+        if let index = tabBarController?.selectedIndex {
             if index == 0 { // native
                 ForecastFetcher.fetchWeather { [weak self] (daily,hour) in
                     self?.update(daily, hour)
@@ -37,27 +35,26 @@ class WeatherViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
     }
-
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return forecast?.count ?? 1
+        return forecastData?.currentForecast.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath)
         if let weatherCell = cell as? WeatherTableViewCell {
-            if let forecast = forecast {
+            let forecast = forecastData.currentForecast
                 weatherCell.dateDescriptionLabel.text = forecast[indexPath.row].dayDescription
                 weatherCell.dateLabel.text = forecast[indexPath.row].day
                 let temperature = index == 0 ? "\(forecast[indexPath.row].weather.temperatureInCelsium)°C" : "\(forecast[indexPath.row].weather.temperatureInFahrenheit)°F"
                 weatherCell.tempLabel.text = "\(temperature)"
                 weatherCell.fetch(forecast[indexPath.row].imageURL, backupData: forecast[indexPath.row].backupImageData) { [unowned weatherCell](url, data) in
                     if url == forecast[indexPath.row].imageURL {
-                        self.forecast[indexPath.row].backupImageData = data
+                        self.forecastData.updateBackupDataAt(indexPath.row, backup: data)
                         weatherCell.weatherImageView.image = UIImage(data: data)
                     }
                 }
-            }
+            
             return weatherCell
         }
         return cell
@@ -92,17 +89,17 @@ class WeatherViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     private func updateWeatherAt(index:Int) {
-        weatherView.updateUIWith(forecast[index])
+        weatherView.updateUIWith(forecastData.currentForecast[index])
     }
     
     
     @IBAction func forecastChoose(_ sender: UISegmentedControl) {
-        forecast = sender.selectedSegmentIndex == 0 ? dailyForecast : hourForecast
+        forecastData.type = sender.selectedSegmentIndex == 0 ? .daily : .hour
         tableView.reloadData()
     }
     
     func chooserSelectedAt(index: Int) {
-        if forecast != nil {
+        if forecastData != nil {
             self.index = index
             tableView.reloadData()
         }
@@ -118,9 +115,7 @@ class WeatherViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     private func update(_ daily:[Forecast],_ hour:[Forecast]) {
-        dailyForecast = daily
-        hourForecast = hour
-        forecast = daily
+        forecastData.update(daily: daily, hour: hour)
         tableView.reloadData()
         forecastSpinner.stopAnimating()
     }
