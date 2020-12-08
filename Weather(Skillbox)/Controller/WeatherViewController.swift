@@ -53,6 +53,7 @@ class WeatherViewController: UIViewController, UITableViewDataSource, UITableVie
                     if url == forecast[indexPath.row].imageURL {
                         self.forecastData.updateBackupDataAt(indexPath.row, backup: data)
                         weatherCell.weatherImageView.image = UIImage(data: data)
+                        self.saveForecast()
                     }
                 }
             }
