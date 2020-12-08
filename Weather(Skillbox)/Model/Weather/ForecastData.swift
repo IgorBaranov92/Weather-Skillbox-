@@ -37,6 +37,8 @@ struct ForecastData: Codable {
         }
     }
     
+    init() {}
+    
     enum ForecastType {
         case daily
         case hour

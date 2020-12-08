@@ -43,7 +43,8 @@ class WeatherViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath)
         if let weatherCell = cell as? WeatherTableViewCell {
-            let forecast = forecastData.currentForecast
+            if let foreCastData = forecastData {
+                let forecast = foreCastData.currentForecast
                 weatherCell.dateDescriptionLabel.text = forecast[indexPath.row].dayDescription
                 weatherCell.dateLabel.text = forecast[indexPath.row].day
                 let temperature = index == 0 ? "\(forecast[indexPath.row].weather.temperatureInCelsium)°C" : "\(forecast[indexPath.row].weather.temperatureInFahrenheit)°F"
@@ -54,7 +55,8 @@ class WeatherViewController: UIViewController, UITableViewDataSource, UITableVie
                         weatherCell.weatherImageView.image = UIImage(data: data)
                     }
                 }
-            
+            }
+
             return weatherCell
         }
         return cell
@@ -115,15 +117,26 @@ class WeatherViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     private func update(_ daily:[Forecast],_ hour:[Forecast]) {
+        forecastData = ForecastData()
         forecastData.update(daily: daily, hour: hour)
+        saveForecast()
         tableView.reloadData()
         forecastSpinner.stopAnimating()
     }
     
     private func recreateForecastIfPossible() {
-        
+        if let url = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("forecast"),let data = try? Data(contentsOf: url),let newValue = ForecastData(json: data) {
+            forecastData = newValue
+            tableView.reloadData()
+            saveForecast()
+        }
     }
     
+    private func saveForecast() {
+        if let urlToSave = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("forecast"),let json = forecastData.json {
+            try? json.write(to: urlToSave)
+        }
+    }
     
     
 }
