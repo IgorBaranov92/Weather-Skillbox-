@@ -1,11 +1,9 @@
 import UIKit
 import CoreData
 
-class CDToDoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, NSFetchedResultsControllerDelegate {
+class CDToDoViewController: PersistenseViewController, UITableViewDataSource, UITextFieldDelegate, NSFetchedResultsControllerDelegate {
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var newTaskTextField: UITextField!
-    
+   
     lazy var fetchedResultsController : NSFetchedResultsController<Tasks>? = {
         let request : NSFetchRequest<Tasks> = NSFetchRequest(entityName: "Tasks")
         request.sortDescriptors = [NSSortDescriptor(key:"dateCreated",ascending:false)]
@@ -28,10 +26,7 @@ class CDToDoViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
+
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete, let object = fetchedResultsController?.object(at: indexPath) {
@@ -59,6 +54,8 @@ class CDToDoViewController: UIViewController, UITableViewDelegate, UITableViewDa
             task.dateCreated = Date()
             task.name = textField.text
             try? AppDelegate.viewContext.save()
+            textField.text = ""
+            textField.placeholder = "Новая задача"
             textField.resignFirstResponder()
             tableView.reloadData()
         }
