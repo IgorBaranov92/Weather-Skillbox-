@@ -527,7 +527,7 @@
                                 </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="60" estimatedRowHeight="60" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="L6W-wT-mnr">
-                                <rect key="frame" x="0.0" y="138" width="414" height="758"/>
+                                <rect key="frame" x="0.0" y="177" width="414" height="719"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCell" id="ibV-qg-Xe5" customClass="ToDoTableViewCell" customModule="Weather_Skillbox_" customModuleProvider="target">
@@ -561,16 +561,30 @@
                                     <outlet property="delegate" destination="PHF-ta-gbP" id="r8h-Oo-uOT"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QzK-Es-Q4O">
+                                <rect key="frame" x="20" y="138" width="374" height="32"/>
+                                <segments>
+                                    <segment title="Все"/>
+                                    <segment title="Активные"/>
+                                    <segment title="Выполненные"/>
+                                </segments>
+                                <connections>
+                                    <action selector="tasksChooserChanged:" destination="PHF-ta-gbP" eventType="valueChanged" id="szG-Kp-WqR"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GJv-gp-V4K"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="L6W-wT-mnr" firstAttribute="top" secondItem="QzK-Es-Q4O" secondAttribute="bottom" constant="8" symbolic="YES" id="0wq-Kd-mSj"/>
                             <constraint firstItem="quS-0o-ntn" firstAttribute="top" secondItem="GJv-gp-V4K" secondAttribute="top" constant="8" id="5wk-Tq-RlR"/>
-                            <constraint firstItem="L6W-wT-mnr" firstAttribute="top" secondItem="quS-0o-ntn" secondAttribute="bottom" constant="8" symbolic="YES" id="B86-Pd-ZkO"/>
+                            <constraint firstItem="QzK-Es-Q4O" firstAttribute="top" secondItem="quS-0o-ntn" secondAttribute="bottom" constant="8" symbolic="YES" id="BjG-LX-6sF"/>
                             <constraint firstItem="quS-0o-ntn" firstAttribute="leading" secondItem="GJv-gp-V4K" secondAttribute="leading" constant="8" id="H6g-kA-elE"/>
                             <constraint firstItem="GJv-gp-V4K" firstAttribute="trailing" secondItem="quS-0o-ntn" secondAttribute="trailing" constant="8" id="NHU-79-lHx"/>
                             <constraint firstItem="L6W-wT-mnr" firstAttribute="leading" secondItem="GJv-gp-V4K" secondAttribute="leading" id="S8b-Nd-Lnr"/>
+                            <constraint firstItem="QzK-Es-Q4O" firstAttribute="leading" secondItem="GJv-gp-V4K" secondAttribute="leading" constant="20" id="aVG-kq-63V"/>
                             <constraint firstItem="L6W-wT-mnr" firstAttribute="trailing" secondItem="GJv-gp-V4K" secondAttribute="trailing" id="p59-h5-vnU"/>
+                            <constraint firstItem="GJv-gp-V4K" firstAttribute="trailing" secondItem="QzK-Es-Q4O" secondAttribute="trailing" constant="20" id="sqb-Y8-qRw"/>
                             <constraint firstAttribute="bottom" secondItem="L6W-wT-mnr" secondAttribute="bottom" id="xft-De-h6f"/>
                         </constraints>
                     </view>
@@ -578,6 +592,7 @@
                     <connections>
                         <outlet property="newTaskTextField" destination="quS-0o-ntn" id="kQC-Hu-wCS"/>
                         <outlet property="tableView" destination="L6W-wT-mnr" id="gLf-8d-xLu"/>
+                        <outlet property="tasksChooser" destination="QzK-Es-Q4O" id="NNd-rc-NnN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdA-mr-Vse" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -601,7 +616,7 @@
                                 </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="60" estimatedRowHeight="60" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="BuN-oi-SCZ">
-                                <rect key="frame" x="0.0" y="138" width="414" height="758"/>
+                                <rect key="frame" x="0.0" y="177" width="414" height="719"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCell" id="Xlw-8B-SsZ" customClass="ToDoTableViewCell" customModule="Weather_Skillbox_" customModuleProvider="target">
@@ -635,28 +650,44 @@
                                     <outlet property="delegate" destination="kLL-jF-FtM" id="OJl-VR-Qbt"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Es-er-vf7">
+                                <rect key="frame" x="20" y="138" width="374" height="32"/>
+                                <segments>
+                                    <segment title="Все"/>
+                                    <segment title="Активные"/>
+                                    <segment title="Выполненные"/>
+                                </segments>
+                                <connections>
+                                    <action selector="tasksChooserChanged:" destination="kLL-jF-FtM" eventType="valueChanged" id="Iv6-yb-i1L"/>
+                                    <action selector="tasksChooserChanged:" destination="PHF-ta-gbP" eventType="valueChanged" id="qFH-dZ-K5E"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XuV-NQ-5wh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="WKg-e3-LM2" firstAttribute="top" secondItem="XuV-NQ-5wh" secondAttribute="top" constant="8" id="0Is-7C-sTx"/>
                             <constraint firstItem="BuN-oi-SCZ" firstAttribute="leading" secondItem="XuV-NQ-5wh" secondAttribute="leading" id="1Tg-ZE-ukv"/>
+                            <constraint firstItem="BuN-oi-SCZ" firstAttribute="top" secondItem="2Es-er-vf7" secondAttribute="bottom" constant="8" symbolic="YES" id="2Wh-t1-amZ"/>
                             <constraint firstAttribute="bottom" secondItem="BuN-oi-SCZ" secondAttribute="bottom" id="3BH-Y7-sSO"/>
-                            <constraint firstItem="BuN-oi-SCZ" firstAttribute="top" secondItem="WKg-e3-LM2" secondAttribute="bottom" constant="8" symbolic="YES" id="9sR-lI-WSg"/>
                             <constraint firstItem="BuN-oi-SCZ" firstAttribute="trailing" secondItem="XuV-NQ-5wh" secondAttribute="trailing" id="fwv-aG-qPJ"/>
+                            <constraint firstItem="XuV-NQ-5wh" firstAttribute="trailing" secondItem="2Es-er-vf7" secondAttribute="trailing" constant="20" id="hAZ-bX-Yxi"/>
+                            <constraint firstItem="2Es-er-vf7" firstAttribute="leading" secondItem="XuV-NQ-5wh" secondAttribute="leading" constant="20" id="ksF-6O-Bos"/>
                             <constraint firstItem="WKg-e3-LM2" firstAttribute="leading" secondItem="XuV-NQ-5wh" secondAttribute="leading" constant="8" id="pI9-XX-Gkn"/>
                             <constraint firstItem="XuV-NQ-5wh" firstAttribute="trailing" secondItem="WKg-e3-LM2" secondAttribute="trailing" constant="8" id="wdp-QS-Xot"/>
+                            <constraint firstItem="2Es-er-vf7" firstAttribute="top" secondItem="WKg-e3-LM2" secondAttribute="bottom" constant="8" symbolic="YES" id="zaw-dx-1oQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Задачи(Realm)" id="66C-G4-2DF"/>
                     <connections>
                         <outlet property="newTaskTextField" destination="WKg-e3-LM2" id="HpR-AR-B3z"/>
                         <outlet property="tableView" destination="BuN-oi-SCZ" id="sId-7w-sNm"/>
+                        <outlet property="tasksChooser" destination="2Es-er-vf7" id="DKd-rZ-5Vy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1la-AB-9GK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-203" y="1682"/>
+            <point key="canvasLocation" x="-204.34782608695653" y="1681.4732142857142"/>
         </scene>
         <!--Defaults-->
         <scene sceneID="XSd-qO-YJ7">

@@ -17,6 +17,13 @@ class TasksR {
             realm.delete(task)
         }
     }
+    
+    func complete(_ task:Task) {
+        try! realm.write {
+            task.isCompleted = !task.isCompleted
+        }
+    }
+    
 
     var all: Results<Task> {
         return realm.objects(Task.self).sorted(byKeyPath: "dateCreated",ascending: false)
