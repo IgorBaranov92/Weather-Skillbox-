@@ -23,10 +23,10 @@ class TasksR {
             task.isCompleted = !task.isCompleted
         }
     }
-    
 
-    var all: Results<Task> {
-        return realm.objects(Task.self).sorted(byKeyPath: "dateCreated",ascending: false)
+    func all(predicate:String) -> Results<Task> {
+        return realm.objects(Task.self).sorted(byKeyPath: "dateCreated",ascending: false).filter(NSPredicate(format: predicate))
+
     }
     
 }
